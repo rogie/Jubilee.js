@@ -144,7 +144,7 @@ function Jubilee(elements,options){
     return;
   } else if( typeof elements == 'object' && elements.nodeName){
     _ELEMENT = elements;
-    _ELEMENT.confetti = _THIS;
+    _ELEMENT.jubilee = _THIS;
   }
 
   var _THIS = this,
@@ -214,7 +214,7 @@ function Jubilee(elements,options){
     }
 
     // build the template
-    _TPL.className = 'confetti ' + _OPT.cssClass;
+    _TPL.className = 'jubilee ' + _OPT.cssClass;
 
   }
 
@@ -278,7 +278,7 @@ function Jubilee(elements,options){
         _OPT.onParticleCreate(p,i);
         p.applyState(p.states.start);
       }
-      // append the particle to the confetti
+      // append the particle to the jubilee
       var pNode = p.getNode();
 
       _NODE.appendChild(pNode);
@@ -320,7 +320,7 @@ function Jubilee(elements,options){
   this.build = function(){
     _NODE = _TPL.cloneNode(true);
     _buildParticles();
-    _NODE.confetti = _THIS;
+    _NODE.jubilee = _THIS;
     _OPT.container.appendChild(_NODE);
     return _THIS;
   };
