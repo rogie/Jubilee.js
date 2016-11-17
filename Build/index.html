@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+        <!-- Hammer reload -->
+          <script>
+            setInterval(function(){
+              try {
+                if(typeof ws != 'undefined' && ws.readyState == 1){return true;}
+                ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
+                ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
+                window.onbeforeunload = function() { ws = null }
+                ws.onmessage = function(){
+                  var links = document.getElementsByTagName('link');
+                    for (var i = 0; i < links.length;i++) {
+                    var link = links[i];
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) {
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,'');
+                      link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
+                    }
+                  }
+                }
+              }catch(e){}
+            }, 1000)
+          </script>
+        <!-- /Hammer reload -->
+      
+
+  <link rel='stylesheet' href='assets/css/normalize.css'>
+<link rel='stylesheet' href='assets/css/rog.ie.css'>
+
+  <title>Jubilee.js</title>
+
+</head>
+
+<body>
+
+  <header>
+    <svg display="none">
+
+  <filter id="logo-shadow" x="-150%" y="-150%" width="300%" height="300%" color-interpolation-filters="sRGB">
+    <feOffset result="offOut" in="SourceGraphic" dx="0" dy="8" />
+    <feGaussianBlur result="blurOut" in="offOut" stdDeviation="6" />
+    <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+    <feComponentTransfer>
+      <feFuncA type="linear" slope="0.5"/>
+    </feComponentTransfer>
+    <feMerge>
+      <feMergeNode/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+
+  <filter id="confetti-shadow" x="-150%" y="-150%" width="300%" height="300%" color-interpolation-filters="sRGB">
+    <feOffset result="offOut" in="SourceGraphic" dx="0" dy="20" />
+    <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+    <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+  </filter>
+
+  <filter id="goo" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+    <feBlend in="SourceGraphic" in2="goo" />
+  </filter>
+
+</svg>
+
+<!-- available for hire -->
+
+<nav>
+  <h1 class="identity">
+    <a href="#">Rog.ie</a>
+    <div class="tagline">
+      <span class="styled-letters surprise">Suprising</span>
+      <span class="amp">&amp;</span>
+      <span class="twinkly-text delight">Delightful</span>
+      <p>design, illustration and <br>development for mobile/web</p>
+      <!-- design and illustration for your 5 senses -->
+    </div>
+  </h1>
+</nav>
+
+  </header>
+
+  <section>
+
+  </section>
+
+</body>
+  <link rel='stylesheet' href='assets/css/jubilee.css'>
+  <script src='assets/js/jubilee.js'></script>
+  <script src='assets/js/rog.ie.js'></script>
+</html>

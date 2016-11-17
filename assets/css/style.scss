@@ -1,0 +1,44 @@
+@import "jubilee";
+
+@include keyframes(fade-in-out){
+  0%{
+    opacity: 0;
+  }
+  30%{
+    opacity: 1;
+  }
+  60%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+@include keyframes(jetwash-in){
+  0%{
+    transform: translateX(-50%) scale(0,1);
+  }
+  100%{
+    transform: translateX(-50%) scale(1,1);
+  }
+}
+
+
+@include keyframes(lift){
+  0%{
+    transform: translateY(0%);
+  }
+  100%{
+    transform: translateY(-10%);
+  }
+}
+
+@include keyframes(space-travel){
+  0%{
+    @include transform( translate3d(-50%,-50%,-100px) );
+  }
+  100%{
+    @include transform( translate3d(-50%,-50%,100px) );
+  }
+}
