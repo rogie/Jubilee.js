@@ -41,15 +41,16 @@ function Particle(opts,states){
 
   function _getVal(v){
     if(typeof v == 'function'){
-      return v();
+      return v(_THIS);
     }else{
       return v;
     }
   }
 
 function _init(){
-    _P.style.transitionDelay = _P.style.animationDelay = _conditionProp(_THIS.delay) + 'ms';
-    _P.style.animationDuration = _P.style.transitionDuration = _conditionProp(_THIS.duration) + 'ms';
+  console.log(_conditionProp(_getVal(_THIS.duration)));
+    _P.style.transitionDelay = _P.style.animationDelay = _conditionProp(_getVal(_THIS.delay)) + 'ms';
+    _P.style.animationDuration = _P.style.transitionDuration = _conditionProp(_getVal(_THIS.duration)) + 'ms';
     if(typeof _THIS.options.onInit == 'function'){
       this.options.onInit(_THIS);
     }
