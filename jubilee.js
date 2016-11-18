@@ -17,6 +17,7 @@ function Particle(opts,states){
       _THIS = this,
       _START = false;
   _P.className = 'particle';
+  _P.appendChild(document.createElement('i'));
   this.particleNode = _P;
   this.delay = opts.delay;
   this.duration = opts.duration;
@@ -72,7 +73,7 @@ function _init(){
     _START = !_START;
     if(_THIS.options.loop && !_THIS.paused){
       if(!_START){
-        setTimeout(_toggleState,_conditionProp(_THIS.delay) + _conditionProp(_THIS.duration));
+        setTimeout(_toggleState,parseInt(_P.style.transitionDelay) + parseInt(_P.style.transitionDuration));
       } else{
         _toggleState();
       }
@@ -137,10 +138,13 @@ function Jubilee(elements,options){
   if( typeof elements == 'string' ){
     elements = document.querySelectorAll(elements);
   }
-  if( typeof elements == 'object' && 'forEach' in elements && elements.length == 1 ){
+  if( typeof elements == 'object' && 'length' in elements && elements.length == 1 ){
     _ELEMENT = elements[0];
-  } else if( typeof elements == 'object' && 'forEach' in elements){
-    elements.forEach(function(el){ new Jubilee(el,options); });
+  } else if( typeof elements == 'object' && 'length' in elements){
+    Array.prototype.forEach.call(
+      elements,
+      function(el){ new Jubilee(el,options);
+    });
     return;
   } else if( typeof elements == 'object' && elements.nodeName){
     _ELEMENT = elements;

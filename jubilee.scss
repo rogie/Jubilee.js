@@ -15,6 +15,15 @@
   @include animation-duration(.3s);
   @include animation-iteration-count(infinite);
 
+  &>i{
+    position: absolute;
+    display: block;
+    left:0;
+    right: 0;
+    top:0;
+    bottom: 0;
+  }
+
   >svg{
     width: 100%;
     height: 100%;
@@ -137,65 +146,4 @@
     }
 
   }
-
-}
-
-
-.confetti.space-gas .particle{
-  width: 100vw;
-  height: 100vh;
-  background: center center no-repeat;
-  background-size: contain;
-  &:nth-child(1){
-    background-image: url(../img/nebula.png);
-    background-size: contain;
-  }
-  &:nth-child(2){
-    background-image: url(../img/dust.png);
-
-  }
-  &:nth-child(3){
-
-  }
-}
-
-.jubilee.starfield .particle{
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  box-shadow: 0 0 60px 10px currentColor;
-  backface-visibility: hidden;
-  @include transform(scale(0.1));
-
-  &:before,
-  &:after{
-    content:'';
-    display: block;
-    position: absolute;
-    opacity: 0.5;
-  }
-  &:after{
-    width: 600%;
-    height: 20%;
-    left: 50%;
-    top: 50%;
-    margin-top: -10%;
-    background: linear-gradient(to right,rgba(255,255,255,0),currentColor,rgba(255,255,255,0));
-    transform: translateX(-50%);
-  }
-  &:before{
-    height: 600%;
-    width: 20%;
-    left: 50%;
-    top: 50%;
-    margin-left: -10%;
-    background: linear-gradient(to bottom,rgba(255,255,255,0),currentColor,rgba(255,255,255,0));
-    transform: translateY(-50%);
-  }
-
-  @include transition(all .3s linear,opacity .3s cubic-bezier(0,4,.84,1));
-}
-
-.particle.twinkle{
-  @include animation(3s fader infinite alternate);
 }
