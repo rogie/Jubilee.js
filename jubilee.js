@@ -48,7 +48,6 @@ function Particle(opts,states){
   }
 
 function _init(){
-  console.log(_conditionProp(_getVal(_THIS.duration)));
     _P.style.transitionDelay = _P.style.animationDelay = _conditionProp(_getVal(_THIS.delay)) + 'ms';
     _P.style.animationDuration = _P.style.transitionDuration = _conditionProp(_getVal(_THIS.duration)) + 'ms';
     if(typeof _THIS.options.onInit == 'function'){
