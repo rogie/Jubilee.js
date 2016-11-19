@@ -1,16 +1,17 @@
 .jubilee{
   position: absolute;
   perspective: 400px;
+  pointer-events: none;
 }
 
 .particle{
-
   width: 10px;
   height: 10px;
   border-radius: 0;
   position: absolute;
   left:0;
   top:0;
+  pointer-events: none;
   @include transition(all .3s linear);
   @include animation-duration(.3s);
   @include animation-iteration-count(infinite);
