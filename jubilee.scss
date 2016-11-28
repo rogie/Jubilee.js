@@ -12,6 +12,7 @@
   left:0;
   top:0;
   pointer-events: none;
+  will-change: opacity,transform,contents;
   @include transition(all .3s linear);
   @include animation-duration(.3s);
   @include animation-iteration-count(infinite);

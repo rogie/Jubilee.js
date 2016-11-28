@@ -154,6 +154,7 @@ function Jubilee(elements,options){
   var _THIS = this,
     _TPL = document.createElement('div'),
     _NODE = null,
+    _PAUSED = true,
     _OPT = {
       event: null,
       particles: 4,
@@ -297,6 +298,8 @@ function Jubilee(elements,options){
   // build and play!
   this.play = function(e){
 
+    _PAUSED = false;
+
     if(!_THIS.particles){
       _THIS.build();
       if(_OPT.container != _ELEMENT){
@@ -330,11 +333,20 @@ function Jubilee(elements,options){
   };
 
   this.pause = function(){
+    _PAUSED = true;
     _THIS.particles.forEach(function(p){
       p.pause();
     });
 
     return _THIS;
+  }
+
+  this.toggle = function(){
+    if(_PAUSED){
+      _THIS.play();
+    }else{
+      _THIS.pause();
+    }
   }
 
   this.stop = function(e){
