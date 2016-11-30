@@ -49,18 +49,18 @@ function Particle(opts,states){
   }
 
 function _init(){
+    void _P.offsetWidth; //trigger reflow
     _P.style.transitionDelay = _P.style.animationDelay = _conditionProp(_getVal(_THIS.delay)) + 'ms';
     _P.style.animationDuration = _P.style.transitionDuration = _conditionProp(_getVal(_THIS.duration)) + 'ms';
+    _P.classList.remove('play');
     if(typeof _THIS.options.onInit == 'function'){
       this.options.onInit(_THIS);
     }
   }
 
   function _toggleState(){
-    //trigger reflow
-    void _P.offsetWidth;
 
-    if(_START){
+    if(_START || !_THIS.options.loop){
       _init();
       _P.classList.add('play');
       _applyState(_THIS.states.end);
@@ -70,7 +70,9 @@ function _init(){
       _P.classList.remove('play');
       _applyState(_THIS.states.start);
     }
+
     _START = !_START;
+
     if(_THIS.options.loop && !_THIS.paused){
       if(!_START){
         setTimeout(_toggleState,parseInt(_P.style.transitionDelay) + parseInt(_P.style.transitionDuration));
@@ -358,6 +360,7 @@ function Jubilee(elements,options){
   }
 
   this.destroy = function(e){
+    _THIS.particles = null;
     _OPT.container.removeChild(_NODE);
     return _THIS;
   }
